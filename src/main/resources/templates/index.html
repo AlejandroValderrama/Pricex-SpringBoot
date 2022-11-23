@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Head import Base -->
+<head th:replace="base :: head"></head>
+
+<body>
+    <!-- Menu import Base -->
+    <section th:replace="base :: menu"></section>
+
+    <!-- Start Hero -->
+    <section id="herocolor1" class="d-flex flex-column justify-content-end align-items-center hero">
+
+        <div class="container">
+            <div class="bienvenida">
+                <h2>Bienvenido a <span>Pricex</span></h2>
+                <p>Rastreamos y realizamos guias de precios sobre el mercado de segunda mano de videojuegos PlayStation.
+                </p>
+            </div>
+
+        </div>
+
+        <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 28 " preserveAspectRatio="none">
+            <defs>
+                <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+            </defs>
+            <g class="wave1">
+                <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+            </g>
+            <g class="wave2">
+                <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+            </g>
+            <g class="wave3">
+                <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+            </g>
+        </svg>
+
+    </section>
+    <!-- End Hero -->
+
+
+    <main id="main" class="my-5 pb-5">
+
+        <!-- Start info -->
+        <section>
+            <div class="container fondo">
+                <div class="row d-lg-none">
+                    <img src="img/monitor.png" class="img-fluid rounded-start" alt="monitor" id="monitor">
+                </div>
+                <div class="row g-0 align-items-center justify-content-center" id="info">
+                    <div class="col-lg-8 pe-5">
+                        <h4>Análisis de precios</h4>
+                        <hr class="opacity-50 linea mb-4">
+                        <p>
+                            Recopilamos y analizamos los precios del mercado de segunda mano de videojuegos PlayStayion
+                            ,con el fin de aplicar una adecuada optimización económica, minimizando gastos para comprar
+                            y aumentando beneficios para
+                            vender.
+                        </p>
+                        <p>
+                            Si conoces la evolución de los precios durante un determinado periodo de tiempo podrás
+                            anticiparte a los cambios en el mercado.
+                        </p>
+
+                        <p>El análisis de precios aporta las siguientes ventajas:</p>
+
+                        <p>
+                            <ul>
+                                <li><i class="icofont-rounded-right"></i> Mejor conocimiento del mercado de segunda mano.</li>
+                                <li><i class="icofont-rounded-right"></i> Mayor rentabilidad y efectividad de los precios.</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="col-lg-4 d-none d-lg-block mb-5">
+                        <img src="img/monitor.png" class="img-fluid rounded-start" alt="monitor">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End info -->
+
+        <!-- Start Bajan -->
+        <section>
+            <div class="container fondo">
+                <div class="row">
+                    <div class="col-6">
+                        <h4><a th:href="@{'/listar/bajan'}" class="enlace">Bajan de Precio</a></h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <hr class="opacity-50 linea">
+                    </div>
+                </div>
+
+                <div class="row row-cols-1 row-cols-lg-3 row-cols-xl-5 row-cols-md-2  text-center">
+                    <div th:each="precio: ${bajan}" class="justify-content-evenly mt-3">
+                        <div class="card tarjetas mx-auto">
+                            <a th:href="@{'/ficha/' + ${precio.precioId.juego.juegoId.consola} + '/' + ${precio.precioId.juego.juegoId.nombre}}"
+                                class="enlace">
+                                <img th:src="${precio.precioId.juego.imagenM}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-title fw-semibold" th:text="${precio.precioId.juego.juegoId.nombre}">
+                                    </p>
+                                    <p class="card-text" th:text="${precio.precioId.juego.juegoId.consola}"></p>
+                                    <button type="button" class="btn btn-outline-secondary">
+                                        <span class="card-text" th:text="${precio.precio}"></span>
+                                        <span>&#8364;</span>
+                                    </button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Bajan -->
+
+        <!-- Start Suben -->
+        <section>
+            <div class="container fondo">
+                <div class="row">
+                    <div class="col-6">
+                        <a th:href="@{'/listar/suben'}" class="enlace">
+                            <h4>Suben de Precio</h4>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <hr class="opacity-50 linea">
+                    </div>
+                </div>
+
+                <div class="row row-cols-1 row-cols-lg-3 row-cols-xl-5 row-cols-md-2  text-center">
+                    <div th:each="precio: ${suben}" class="justify-content-evenly mt-3">
+                        <div class="card tarjetas mx-auto">
+                            <a th:href="@{'/ficha/' + ${precio.precioId.juego.juegoId.consola} + '/' + ${precio.precioId.juego.juegoId.nombre}}"
+                                class="enlace">
+                                <img th:src="${precio.precioId.juego.imagenM}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-title fw-semibold" th:text="${precio.precioId.juego.juegoId.nombre}">
+                                    </p>
+                                    <p class="card-text" th:text="${precio.precioId.juego.juegoId.consola}"></p>
+                                    <button type="button" class="btn btn-outline-secondary">
+                                        <span class="card-text" th:text="${precio.precio}"></span>
+                                        <span>&#8364;</span>
+                                    </button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Suben -->
+    </main>
+
+    <!-- Boton to Top import Base -->
+    <section th:replace="base :: boton"></section>
+
+    <!-- Footer import Base -->
+    <section th:replace="base :: footer"></section>
+</body>
+
+</html>

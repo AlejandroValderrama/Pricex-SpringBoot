@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Head import Base -->
+<head th:replace="base :: head"></head>
+
+<body>
+    <!-- Menu import Base -->
+    <section th:replace="base :: menu"></section>
+
+    <!-- Start Ficha -->
+    <section class="mb-5">
+        <div class="container fondo" >
+            <div class="d-flex flex-wrap my-3 justify-content-center ">
+                <div class="col-md-12 col-lg-3" id="caratula">
+                    <img th:src="${juego.imagenM}" class="img-fluid rounded-start mx-auto d-none d-lg-block py-4 pe-5"/>
+                    <img th:src="${juego.imagenM}" class="img-fluid rounded-start mx-auto d-block d-lg-none imagen"/>
+                </div>
+                <div class="col-md-12 col-lg-9" id="texto">
+                    <h4 class="card-title d-none d-lg-block mt-3" th:text="${juego.juegoId.nombre}"></h4>
+                    <h4 class="card-title text-center d-lg-none" th:text="${juego.juegoId.nombre}"></h4>
+                    <p class="card-text  d-none d-lg-block" th:text="${juego.juegoId.consola}"></p>
+                    <p class="card-text text-center d-lg-none" th:text="${juego.juegoId.consola}"></p>
+                    <canvas id="myChart" class="mb-3"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Ficha -->
+
+    <!-- Boton to Top import Base -->
+    <section th:replace="base :: boton"></section>
+
+    <!-- Footer import Base -->
+    <section th:replace="base :: footer"></section>
+
+    <!-- JS File Chart -->
+    <script src="/js/chart.js"></script>
+</body>
+
+</html>

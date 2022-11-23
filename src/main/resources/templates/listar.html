@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Head import Base -->
+<head th:replace="base :: head"></head>
+
+<body>
+    <!-- Menu import Base -->
+    <section th:replace="base :: menu"></section>
+
+    <section>
+
+        <div class="container fondo mb-5">
+            <!-- Start title & Order -->
+            <div class="row mb-5">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="ms-5 d-none d-md-block">
+                        <span class="fs-4 fw-semibold pt-1 flex-grow-1" th:text="${consola}"></span>
+                        <span class="fs-6 fw-normal pt-1 flex-grow-1 me-3" th:text="'('+${cantidad}+')'"></span>
+                    </div>
+                    
+                    <div class="d-block d-md-none">
+                        <div class="fs-4 fw-semibold pt-1 flex-grow-1" th:text="${consola}"></div>
+                        <div class="fs-6 fw-normal pt-1 flex-grow-1 me-3" th:text="'('+${cantidad}+')'"></div>
+                    </div>
+
+                    <div class="me-5 d-none d-md-block">
+                        <span class="fs-6 fw-semibold pt-1 flex-grow-1">Ordenar Por:</span>
+                        <select class="form-select form-select-md" aria-label="Select" id="ordenar">
+                            <option value="1" th:if="${opcion == '1'}" selected>Nombre A-Z</option>
+                            <option value="1" th:if="${opcion != '1'}" >Nombre A-Z</option>
+                            <option value="2" th:if="${opcion == '2'}" selected>Nombre Z-A</option>
+                            <option value="2" th:if="${opcion != '2'}">Nombre Z-A</option>
+                            <option value="3" th:if="${opcion == '3'}" selected>Precio <span>&#129047;</span></option>
+                            <option value="3" th:if="${opcion != '3'}">Precio <span>&#129047;</span></option>
+                            <option value="4" th:if="${opcion == '4'}" selected>Precio <span>&#129045;</span></option>
+                            <option value="4" th:if="${opcion != '4'}">Precio <span>&#129045;</span></option>
+                        </select>
+                    </div>
+
+                    <div class="d-block d-md-none">
+                        <span class="fs-6 fw-semibold pt-1 flex-grow-1">Ordenar Por:</span>
+                        <select class="form-select form-select-md" aria-label="Select" id="ordenar">
+                            <option value="1" th:if="${opcion == '1'}" selected>Nombre A-Z</option>
+                            <option value="1" th:if="${opcion != '1'}" >Nombre A-Z</option>
+                            <option value="2" th:if="${opcion == '2'}" selected>Nombre Z-A</option>
+                            <option value="2" th:if="${opcion != '2'}">Nombre Z-A</option>
+                            <option value="3" th:if="${opcion == '3'}" selected>Precio <span>&#129047;</span></option>
+                            <option value="3" th:if="${opcion != '3'}">Precio <span>&#129047;</span></option>
+                            <option value="4" th:if="${opcion == '4'}" selected>Precio <span>&#129045;</span></option>
+                            <option value="4" th:if="${opcion != '4'}">Precio <span>&#129045;</span></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- End title & Order -->
+
+            <!-- Start List -->
+            <div class="d-flex flex-wrap justify-content-evenly" id="lista">
+                <!-- Start Loop -->
+                <div th:each="precio: ${precios}" class="col-lg-5 col-xl-5 col-12">
+                    <!-- Start Card -->
+                    <div class="card border-1 mx-auto mb-4 tarjeta">
+                        <a th:href="@{'/ficha/' + ${precio.precioId.juego.juegoId.consola} + '/' + ${precio.precioId.juego.juegoId.nombre}}" class="enlace">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-md-4">
+                                    <img th:src="${precio.precioId.juego.imagenS}" class="rounded-start" />
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h6 class="card-title" th:text="${precio.precioId.juego.juegoId.nombre}"></h6>
+                                        <p class="card-text" th:text="${precio.precioId.juego.juegoId.consola}"></p>
+
+                                        <button type="button" class="btn btn-outline-secondary">
+                                            <span class="card-text" th:text="${precio.precio}"></span>
+                                            <span>&#8364;</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <!-- End Card -->
+                </div>
+                <!-- End Loop -->
+            </div>
+            <!-- End List -->
+
+            <!-- Start Pagination -->
+            <div class="row mt-5">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center" id="pagination">
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <!-- End Pagination -->
+        </div>
+
+        <!-- Hidden for JS Pagination -->
+        <input type="hidden" th:value="${last}" id="totalPage"/>
+        <input type="hidden" th:value="${current}" id="current"/>
+        <input type="hidden" th:value="${consola}" id="consola"/>
+
+    </section>
+
+    <!-- Boton to Top import Base -->
+    <section th:replace="base :: boton"></section>
+
+    <!-- Footer import Base -->
+    <section th:replace="base :: footer"></section>
+
+    <!-- JS File -->
+    <script src="/js/pagination.js"></script>
+    <script src="/js/select.js"></script>
+</body>
+
+
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/img/favicon2.png" rel="icon">
+    <link  href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="/css/icofont/icofont.min.css" rel="stylesheet">
+
+    <title>404: Página no encontrada</title>
+</head>
+<body>
+
+    <!-- Menu import Base -->
+    <section th:replace="base :: menu"></section>
+
+    <!-- Start Hero -->
+    <section class="hero" id="herocolor2">
+
+        <div class="row justify-content-center">
+            <img src="img/404.png" class="img-fluid rounded-start " alt="404" id="img404">
+        </div>
+
+        <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none" id="svg">
+            <defs>
+                <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+            </defs>
+            <g class="wave1">
+                <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)" >
+            </g>
+            <g class="wave2">
+                <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+            </g>
+            <g class="wave3">
+                <use xlink:href="#wave-path" x="50" y="9" fill="#fff" >
+            </g>
+        </svg>
+
+    </section>
+    <!-- End Hero -->
+
+    <section id="espacio"></section>
+    
+    <!-- Footer import Base -->
+    <section th:replace="base :: footer"></section>
+
+</body>
+</html>
